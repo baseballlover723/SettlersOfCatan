@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Settlers Of Catan</title>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="new_game.css">
+    <script src="new_game.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="jumbotron">
+        <h1>Create a New Game</h1>
+        <a class="btn btn-primary btn-lg" href="index.html" role="button">Main Page &raquo;</a>
+    </div>
+    <div class="row">
+        <div class="col-sm-4">
+            <div id="create_game_input_box" class="input_box">
+                <p>
+                    Insert Game Name: <input type="text" name="game_name"/>
+                </p>
+                <p>
+                    Select time per turn 
+                    <select>
+                        <option value="10">10 Seconds</option>
+                        <option value="30">30 Seconds</option>
+                        <option value="60">1 Minute</option>
+                        <option value="150">2.5 Minutes</option>
+                        <option value="300" selected>5 Minutes</option>
+                        <option value="600">10 Minutes</option>
+                        <option value="1800">30 Minutes</option>
+                        <option value="3600">1 Hour</option>
+                        <option value="21600">6 Hours</option>
+                        <option value="86400">1 Day (WTF really?)</option>
+                    </select> 
+                </p>
+            </div>
+            <div id="create_game_visibility_box" class="input_box">
+                Do you want to make your game private?
+                <form action="">
+                    <input type="checkbox" name="visibility" value="private"> Private
+                </form>
+            </div>
+            <div id="create_game_name_box" class="input_box">
+                <p>Enter your name</p>
+                <input type="text" name="host_name"/>
+            </div>
+            <div id="create_game_button" class="input_box">
+                <a class="btn btn-primary btn-lg" href="game.html" role="button">Create your game &raquo;</a>
+            </div>
+        </div>
+        <div class="col-sm-8">
+            <h1>INSERT PICTURE HERE</h1>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
