@@ -35,6 +35,7 @@ module Catan
         # Finish a Game and remove it from the queue
         def finish()
             @@games.delete(@id)
+            @@gameCounter -= 1;
         end
     end
 end
