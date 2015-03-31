@@ -2,6 +2,7 @@ require "hashids"
 
 module Catan
     class Game
+        attr_reader :isPrivate
         @@hashids = Hashids.new "catan"
         @@games = {}
         @@gameCounter = 0
