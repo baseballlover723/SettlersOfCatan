@@ -57,9 +57,8 @@ module Catan
             assert_equal 0, board.rollNumber
             
             # run rollDice method 100 times to be extra sure
-            for i in 1..100
+            100.times do
                 result = board.rollDice()
-                
                 assert_includes 2..12, result
             end
             
