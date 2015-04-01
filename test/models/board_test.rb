@@ -36,6 +36,20 @@ module Catan
             
             board.incrementTurn
             assert_equal 1, board.currentTurn
+            
+            board.incrementTurn
+            assert_equal 2, board.currentTurn
+        end
+        
+        def test_that_board_makes_dice_active
+            board = Catan::Board.new(@hexList, @game, @players)
+            assert_equal false, board.activeDice
+            
+            board.activeDice = true
+            assert_equal true, board.activeDice
+            
+            board.activeDice = false
+            assert_equal false, board.activeDice
         end
     end
 end
