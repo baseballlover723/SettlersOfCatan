@@ -11,7 +11,7 @@ module Catan
         end
         
         def incrementTurn
-            @currentTurn++ 
+            @currentTurn += 1 
         end
     end
 end
