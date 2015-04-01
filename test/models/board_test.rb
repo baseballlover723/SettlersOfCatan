@@ -51,5 +51,18 @@ module Catan
             board.activeDice = false
             assert_equal false, board.activeDice
         end
+        
+        def test_that_board_rolls_dice
+            board = Catan::Board.new(@hexList, @game, @players)
+            assert_equal 0, board.rollNumber
+            
+            # run rollDice method 100 times to be extra sure
+            for i in 1..100
+                result = board.rollDice()
+                
+                assert_includes 2..12, result
+            end
+            
+        end
     end
 end
