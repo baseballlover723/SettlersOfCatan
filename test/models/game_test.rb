@@ -72,6 +72,28 @@ module Catan
         
         # test after player class is implemented
         def test_that_game_has_players
+            game = Catan::Game.new(false, 0, @players)
+            
+            assert_equal "Collin", game.players[0].name
+            assert_equal "Joe", game.players[1].name
+            assert_equal "Austin", game.players[2].name
+            assert_equal "James", game.players[3].name
+        end
+        
+        def test_that_game_has_exactly_four_players
+            playerList = []
+            err = assert_raises(ArgumentError) {Catan::Game.new(false, 0, playerList)}
+            assert_equal "Exactly four players must participate, we received 0", err.message
+            
+            playerList << Catan::Player.new("George")
+            err = assert_raises(ArgumentError) {Catan::Game.new(false, 0, playerList)}
+            assert_equal "Exactly four players must participate, we received 1", err.message
+            
+            playerList << Catan::Player.new("Mike")
+            playerList << Catan::Player.new("Eddy")
+            err = assert_raises(ArgumentError) {Catan::Game.new(false, 0, playerList)}
+            assert_equal "Exactly four players must participate, we received 3", err.message
+            
         end
     end
 end

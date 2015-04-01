@@ -2,7 +2,7 @@ require "hashids"
 
 module Catan
     class Game
-        attr_reader :isPrivate, :board
+        attr_reader :isPrivate, :board, :players
         @@hashids = Hashids.new "catan"
         @@games = {}
         @@gameCounter = 0
@@ -13,8 +13,8 @@ module Catan
             @isPrivate = isPrivate
             @turnLimit = turnLimit
             @@games[@id] = self
-            @playerList = playerList
-            @board = Catan::Board.new(self, @playerList)
+            @players = playerList
+            @board = Catan::Board.new(self, @players)
         end
         
         def id
