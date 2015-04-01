@@ -4,12 +4,13 @@ require File.expand_path('../../../app/models/board', __FILE__)
 module Catan
     class TestBoard < Minitest::Test
         def setup
-            @game = Catan::Game.new(true, 2)
             @players = []
             @players << Catan::Player.new("Collin")
             @players << Catan::Player.new("Joe")
             @players << Catan::Player.new("Austin")
             @players << Catan::Player.new("James")
+            
+            @game = Catan::Game.new(true, 2, @players)
         end
         
         def test_that_board_instantiates_properly
@@ -22,6 +23,7 @@ module Catan
             
             assert_equal true, board.game.isPrivate
             assert_equal [2,4], board.hexes[2].position
+            assert_equal "James", board.players[3].name
         end
         
         def test_that_board_increments_turn
@@ -73,6 +75,21 @@ module Catan
             assert_equal "Joe", board.players[1].name
             assert_equal "Austin", board.players[2].name
             assert_equal "James", board.players[3].name
+        end
+        
+        def test_that_board_has_exactly_four_players
+            playersList = []
+            err = assert_raises(ArgumentError) {Catan::Board.new(@game, playersList)}
+            assert_equal "Exactly four players must participate, we received 0", err.message
+            
+            playersList << Catan::Player.new("James")
+            err = assert_raises(ArgumentError) {Catan::Board.new(@game, playersList)}
+            assert_equal "Exactly four players must participate, we received 1", err.message
+            
+            playersList << Catan::Player.new("George")
+            playersList << Catan::Player.new("Alex")
+            err = assert_raises(ArgumentError) {Catan::Board.new(@game, playersList)}
+            assert_equal "Exactly four players must participate, we received 3", err.message
         end
     end
 end

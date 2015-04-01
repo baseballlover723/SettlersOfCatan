@@ -7,12 +7,13 @@ module Catan
         @@games = {}
         @@gameCounter = 0
         
-        def initialize(isPrivate, turnLimit)
+        def initialize(isPrivate, turnLimit, playerList)
             @id = @@gameCounter
             @@gameCounter += 1
             @isPrivate = isPrivate
             @turnLimit = turnLimit
             @@games[@id] = self
+            @playerList = playerList
             @board = Catan::Board.new(self, @playerList)
         end
         
