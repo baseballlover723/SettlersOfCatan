@@ -11,7 +11,11 @@ module Catan
         end
         
         def incrementTurn
-            @currentTurn += 1 
+            if (@currentTurn == 4)
+                @currentTurn = 1
+            else
+                @currentTurn += 1 
+            end
         end
     end
 end
