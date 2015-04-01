@@ -53,5 +53,15 @@ module Catan
             game2 = Catan::Game.new(true, 0)
             assert_equal "m6", game2.id
         end
+        
+        def test_that_game_has_board
+            game1 = Catan::Game.new(false, 0)
+            
+            assert_equal false, game1.board.game.isPrivate
+            
+            game2 = Catan::Game.new(true, 0)
+            
+            assert_equal true, game2.board.game.isPrivate
+        end
     end
 end

@@ -1,10 +1,10 @@
 module Catan
     class Board
-        attr_reader :hexes, :players, :game, :dice
-        attr_accessor :currentTurn, :activeDice, :rollNumber
+        attr_reader :players, :game, :dice
+        attr_accessor :currentTurn, :activeDice, :rollNumber, :hexes
         
-        def initialize(hexes, game, players)
-            @hexes = hexes
+        def initialize(game, players)
+            @hexes = []
             @game = game
             @players = players
             @currentTurn = 1
@@ -25,7 +25,7 @@ module Catan
         def rollDice
             roll1 = 1 + rand(6)
             roll2 = 1 + rand(6)
-            return roll1 + roll2
+            @rollNumber = roll1 + roll2
         end
     end
 end
