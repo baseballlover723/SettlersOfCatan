@@ -63,5 +63,9 @@ module Catan
             
             assert_equal true, game2.board.game.isPrivate
         end
+        
+        # test after player class is implemented
+        def test_that_game_has_players
+        end
     end
 end

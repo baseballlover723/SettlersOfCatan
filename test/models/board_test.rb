@@ -5,7 +5,11 @@ module Catan
     class TestBoard < Minitest::Test
         def setup
             @game = Catan::Game.new(true, 2)
-            @players = "Will be an array of Player objects"
+            @players = []
+            @players << Catan::Player.new("Collin")
+            @players << Catan::Player.new("Joe")
+            @players << Catan::Player.new("Austin")
+            @players << Catan::Player.new("James")
         end
         
         def test_that_board_instantiates_properly
@@ -62,8 +66,13 @@ module Catan
             end
         end
         
-        # test later
         def test_that_board_has_players
+            board = Catan::Board.new(@game, @players)
+            
+            assert_equal "Collin", board.players[0].name
+            assert_equal "Joe", board.players[1].name
+            assert_equal "Austin", board.players[2].name
+            assert_equal "James", board.players[3].name
         end
     end
 end
