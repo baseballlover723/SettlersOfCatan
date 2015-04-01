@@ -6,12 +6,17 @@ module Catan
         def initialize(game, players)
             @hexes = []
             @game = game
-            @players = players
+            @players = *players
             @currentTurn = 1
             @activeDice = false
             # initially 0 so the first roll to decide who plays
             # first will always be greater than rollNumber
             @rollNumber = 0
+            
+            #ensure exactly 4 players
+            if (@players.length != 4)
+                raise ArgumentError, "Exactly four players must participate, we received #{@players.length}" 
+            end
         end
         
         def incrementTurn
