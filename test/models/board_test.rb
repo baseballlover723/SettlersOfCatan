@@ -35,7 +35,7 @@ module Catan
             assert_equal 4, board.currentTurn
             
             board.incrementTurn
-            assert_equal 5, board.currentTurn
+            assert_equal 1, board.currentTurn
         end
     end
 end
